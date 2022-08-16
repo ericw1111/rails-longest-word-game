@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <h1>Result</h1>
+  <div class="letters">
+    <% @letters.each do |letter| %>
+      <div class="letter">
+        <%= letter %>
+      </div>
+    <% end %>
+  </div>
+  <p>
+  <% if @check_letters && @found %>
+    Congrats! <strong><%=@word%></strong> is a match, and a valid English word!
+  <% elsif !@check_letters && @found %>
+    Sorry, <strong><%=@word%></strong> can't be built out of <strong><%=params[:letters]%></strong>.
+  <% elsif @check_letters && !@found %>
+  Sorry, <strong><%=@word%></strong> isn't a valid English word.
+  <% else %>
+    Sorry, <strong><%=@word%></strong> isn't a valid English word AND can't be built out of <strong><%=params[:letters]%></strong>.
+  <% end %>
+  </p>
+</div>
